@@ -1,95 +1,84 @@
-namespace Library;
+using System;
+using System.Collections.Generic;
 
-public class Entrenador
+namespace Library
 {
-    public string Nombre { get; private set; }
-    public List<Pokemon> miCatalogo = new List<Pokemon>();
-    public List<Pokemon> misMuertos = new List<Pokemon>();
-    public List<Item> misItems = new List<Item>();
-    public bool MiTurno { get; set; }
-    public int Turnos { get; set; }
-
-    public void AgregarPokemon(string nombre)
+    public class Entrenador
     {
-        //user story 1: poner en fachada
-        //while (this.miCatalogo.Count < 6)
-        {
-            if (this.miCatalogo.Count > 0)
-            {
-                bool encontrado = false;
-                for (int i = 0; i < this.miCatalogo.Count; i++)
-                {
-                    Pokemon pokemon = this.miCatalogo[i];
-                    if (pokemon.Nombre == nombre)
-                    {
-                        encontrado = true;
-                    }
-                }
+        public string Nombre { get; private set; }
+        public List<Pokemon> miCatalogo = new List<Pokemon>();
+        public List<Pokemon> misMuertos = new List<Pokemon>();
+        public List<Item> misItems = new List<Item>();
+        public bool MiTurno { get; set; }
+        public int Turnos { get; set; }
 
-                if (encontrado == false && miCatalogo.Count <= 6 && Batalla.EnBatalla == false)
-                {
-                    Pokemon pokemonNuevo = Pokedex.BuscarPokemon(nombre);
-                    miCatalogo.Add(pokemonNuevo);
-                }
+        public Entrenador(string nombre)
+        {
+            this.Nombre = nombre;
+        }
+
+        // Método para agregar un Pokémon al catálogo
+        public void AgregarPokemon(Pokemon pokemon)
+        {
+            if (this.miCatalogo.Count < 6 && !this.miCatalogo.Contains(pokemon) && !Batalla.EnBatalla)
+            {
+                miCatalogo.Add(pokemon);
             }
             else
             {
-                Pokemon pokemonNuevo = Pokedex.BuscarPokemon(nombre);
-                miCatalogo.Add(pokemonNuevo);
+                Console.WriteLine("No se puede agregar el Pokémon. Verifica que no esté ya en el catálogo o que no hayas alcanzado el límite.");
             }
         }
 
-
-    }
-
-    public void QuitarPokemon(Pokemon pokemon)
-    {
-        if (this.miCatalogo.Contains(pokemon))
+        // Método para quitar un Pokémon del catálogo
+        public void QuitarPokemon(Pokemon pokemon)
         {
-            this.miCatalogo.Remove(pokemon);
+            if (this.miCatalogo.Contains(pokemon))
+            {
+                this.miCatalogo.Remove(pokemon);
+            }
         }
-    }
 
-    public void AgregarItem(Item item)
-    {
-        if (Batalla.EnBatalla)
+        // Método para agregar un ítem
+        public void AgregarItem(Item item)
         {
-            this.misItems.Add(item);
+            if (Batalla.EnBatalla)
+            {
+                this.misItems.Add(item);
+            }
         }
-    }
 
-    public void QuitarItem(Item item)
-    {
-        if (this.misItems.Contains(item))
+        // Método para quitar un ítem
+        public void QuitarItem(Item item)
         {
-            this.misItems.Remove(item);
+            if (this.misItems.Contains(item))
+            {
+                this.misItems.Remove(item);
+            }
         }
-    }
 
-    public void AgregarMuerto(Pokemon pokemon)
-    {
-        if (!this.misMuertos.Contains(pokemon))
+        // Método para agregar un Pokémon a la lista de muertos
+        public void AgregarMuerto(Pokemon pokemon)
         {
-            this.misMuertos.Add(pokemon);
+            if (!this.misMuertos.Contains(pokemon))
+            {
+                this.misMuertos.Add(pokemon);
+            }
         }
-    }
 
-    public void QuitarMuerto(Pokemon pokemon)
-    {
-        this.misMuertos.Remove(pokemon);
-    }
+        // Método para quitar un Pokémon de la lista de muertos
+        public void QuitarMuerto(Pokemon pokemon)
+        {
+            this.misMuertos.Remove(pokemon);
+        }
 
-    public void Recuperar(Pokemon pokemon)
-    {
+        // Método para recuperar un Pokémon
+        public void Recuperar(Pokemon pokemon)
+        {
+            this.miCatalogo.Add(pokemon);
+        }
 
-        this.miCatalogo.Add(pokemon);
-
-    }
-
-    public Pokemon PokemonActual { get; set; }
-
-    public Entrenador(string nombre)
-    {
-        this.Nombre = nombre;
+        // Propiedad para el Pokémon actual
+        public Pokemon PokemonActual { get; set; }
     }
 }
