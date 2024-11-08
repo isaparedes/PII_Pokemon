@@ -8,7 +8,7 @@ public class Batalla
 
     public Batalla(Entrenador jugador1, Entrenador jugador2)
     {
-        Batalla.EnBatalla = true;
+        EnBatalla = true;
         this.Jugador1 = jugador1;
         this.Jugador1.AgregarItem(new SuperPocion());
         this.Jugador1.AgregarItem(new SuperPocion());
@@ -38,10 +38,12 @@ public class Batalla
             Random primerPokemonJ2 = new Random();
             int pokemonRandom2 = primerPokemonJ2.Next(0, 6);
             Jugador2.PokemonActual = Jugador2.miCatalogo[pokemonRandom2];
-            while (Jugador1.miCatalogo.Count > 0 && Jugador2.miCatalogo.Count > 0)
+            while (Jugador1.miCatalogo.Count > 0 && Jugador2.miCatalogo.Count > 0 && EnBatalla)
             {
                 Jugador1.MiTurno = true;
                 Jugador1.Turnos += 1;
+                Consola.ImprimirDatos(Jugador1);
+                Consola.ImprimirDatos(Jugador2);   
                 Console.WriteLine($"\nTURNO JUGADOR 1: {Jugador1.Nombre}");
                 Consola.ElegirAccion();
                 int usarRevivir1 = 1;
@@ -75,38 +77,52 @@ public class Batalla
                 Turno.HacerAccion(Jugador1,accion1,Jugador2,usarRevivir1,usarSuperPocion1,usarCuraTotal1);
                 Jugador2.MiTurno = true;
                 Jugador2.Turnos += 1;
-                Console.WriteLine($"\nTURNO JUGADOR 2: {Jugador2.Nombre}");
-                Consola.ElegirAccion();
-                int usarRevivir2 = 1;
-                int usarSuperPocion2 = 1;
-                int usarCuraTotal2 = 1;
-                for (int i = 0; i < Jugador2.miCatalogo.Count; i++)
+                if (Jugador2.miCatalogo.Count == 0 && Jugador2.misItems.OfType<Revivir>().Any() == false)
                 {
-                    Pokemon pokemon = Jugador2.miCatalogo[i];
-                    if (pokemon.VidaTotal < pokemon.VidaInicial)
+                    EnBatalla = false;
+                }
+                else
+                {
+                    Consola.ImprimirDatos(Jugador1);
+                    Consola.ImprimirDatos(Jugador2);    
+                    Console.WriteLine($"\nTURNO JUGADOR 2: {Jugador2.Nombre}");
+                    Consola.ElegirAccion();
+                    int usarRevivir2 = 1;
+                    int usarSuperPocion2 = 1;
+                    int usarCuraTotal2 = 1;
+                    for (int i = 0; i < Jugador2.miCatalogo.Count; i++)
                     {
-                        usarSuperPocion2 = 0;
-                    }
+                        Pokemon pokemon = Jugador2.miCatalogo[i];
+                        if (pokemon.VidaTotal < pokemon.VidaInicial)
+                        {
+                            usarSuperPocion2 = 0;
+                        }
 
-                    if (pokemon.Dormido || pokemon.Paralizado || pokemon.Envenenado || pokemon.Quemado)
-                    {
-                        usarCuraTotal2 = 0;
+                        if (pokemon.Dormido || pokemon.Paralizado || pokemon.Envenenado || pokemon.Quemado)
+                        {
+                            usarCuraTotal2 = 0;
+                        }
                     }
-                }
-                if (Jugador2.misMuertos.Count > 0)
-                    usarRevivir2 = 0;
+                    if (Jugador2.misMuertos.Count > 0)
+                        usarRevivir2 = 0;
                 
-                string accion2 = Console.ReadLine();
-                if (usarRevivir2 == 1 && usarSuperPocion2 == 1 && usarCuraTotal2 == 1)
-                {
-                    while (accion2 == "2")
+                    string accion2 = Console.ReadLine();
+                    if (usarRevivir2 == 1 && usarSuperPocion2 == 1 && usarCuraTotal2 == 1)
                     {
-                        Console.WriteLine("No puedes usar un item. Elige otra acción.");
-                        Consola.ElegirAccion();
-                        accion2 = Console.ReadLine();
+                        while (accion2 == "2")
+                        {
+                            Console.WriteLine("No puedes usar un item. Elige otra acción.");
+                            Consola.ElegirAccion();
+                            accion2 = Console.ReadLine();
+                        }
                     }
+                    Turno.HacerAccion(Jugador2,accion2,Jugador1,usarRevivir2,usarSuperPocion2,usarCuraTotal2);
                 }
-                Turno.HacerAccion(Jugador2,accion2,Jugador1,usarRevivir2,usarSuperPocion2,usarCuraTotal2);
+                if (Jugador1.misItems.OfType<Revivir>().Any() == false)
+                {
+                    EnBatalla = false;
+                }
+
 
             }
         }
