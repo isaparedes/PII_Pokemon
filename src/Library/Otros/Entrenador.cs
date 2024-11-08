@@ -12,7 +12,7 @@ public class Entrenador
     public void AgregarPokemon(string nombre)
     {
         //user story 1: poner en fachada
-        while (this.miCatalogo.Count < 6)
+        //while (this.miCatalogo.Count < 6)
         {
             if (this.miCatalogo.Count > 0)
             {

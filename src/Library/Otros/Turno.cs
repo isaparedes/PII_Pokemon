@@ -7,17 +7,31 @@ public static class Turno
     {
         Pokemon pokemonActual = entrenador.PokemonActual;
         Pokemon pokemonAtacado = entrenadorAtacado.PokemonActual;
+        if (pokemonActual.VidaTotal == 0)
+        {
+            entrenador.QuitarPokemon(pokemonActual);
+            entrenador.AgregarMuerto(pokemonActual);
+            Console.WriteLine($"\nTu pokemon {pokemonActual.Nombre} ha muerto");
+            Console.WriteLine($"Puede cambiarlo o usar un item");
+            Consola.ElegirAccion();
+            numero = Console.ReadLine();
+            while (numero == "0")
+            {
+                Console.WriteLine("Elija una opción válida");
+                numero = Console.ReadLine();
+            }
+        }
         foreach (Pokemon pokemon in entrenador.miCatalogo)
         {
             if (pokemon.TurnosDormido == entrenador.Turnos)
                 pokemon.Dormido = false;
         }
 
-        if (pokemonActual.VidaTotal == 0 || pokemonActual.Dormido && numero == "0")
+        if (pokemonActual.Dormido && numero == "0")
         {
             while (numero == "0")
             {
-                Console.WriteLine("\nNo se puede elegir atacar, su pokemon está muerto o dormido. Elija otra opción");
+                Console.WriteLine("\nNo se puede elegir atacar, su pokemon está dormido. Elija otra opción");
                 Consola.ElegirAccion();
                 numero = Console.ReadLine();
             }
@@ -51,21 +65,7 @@ public static class Turno
                 pokemon.RecibirDano(pokemon.VidaTotal * 10 / 100);
             }
         }
-
-        if (pokemonActual.VidaTotal == 0)
-        {
-            entrenador.QuitarPokemon(pokemonActual);
-            entrenador.AgregarMuerto(pokemonActual);
-            Console.WriteLine($"\nTu pokemon {pokemonActual.Nombre} ha muerto");
-            Console.WriteLine($"Puede cambiarlo o usar un item");
-            Consola.ElegirAccion();
-            numero = Console.ReadLine();
-            while (numero == "0")
-            {
-                Console.WriteLine("Elija una opción válida");
-                numero = Console.ReadLine();
-            }
-        }
+        
 
         if (numero == "0")
         {
