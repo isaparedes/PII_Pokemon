@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Library
 {
@@ -22,6 +23,7 @@ namespace Library
         {
             if (this.miCatalogo.Count < 6 && !this.miCatalogo.Contains(pokemon) && !Batalla.EnBatalla)
             {
+                
                 miCatalogo.Add(pokemon);
             }
             else
