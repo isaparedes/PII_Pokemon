@@ -21,7 +21,7 @@ public static class Consola
     }
   }
 
-  public static void ElegirAtaque(Pokemon pokemon)
+  public static void ElegirAtaque(Pokemon pokemon) //user story 2
   {
     Console.WriteLine($"\nLISTA DE ATAQUES DISPONIBLES DE {pokemon.Nombre} (Seleccione según el número:");
     for (int i = 0; i < pokemon.ataques.Count; i++)
@@ -38,7 +38,7 @@ public static class Consola
     }
   }
 
-  public static void ElegirAtaqueSimple(Pokemon pokemon)
+  public static void ElegirAtaqueSimple(Pokemon pokemon) //user story 2
   {
     Console.WriteLine(
       $"\nEl pokemon a atacar está bajo algún efecto de ataques especiales. Solo puede atacar con ataques simples");
@@ -87,8 +87,9 @@ public static class Consola
     }
   }
 
-  public static void ImprimirDatos(Entrenador usuario)
+  public static void ImprimirDatos(Entrenador usuario, Entrenador usuario2)
   {
+    
     Console.WriteLine($"\nDATOS DE POKEMONES DE JUGADOR {usuario.Nombre}:\n");
     {
       Console.WriteLine($"\tVIVOS:"); 
@@ -116,6 +117,39 @@ public static class Consola
       else
       {
         foreach (Pokemon pokemonMuerto in usuario.misMuertos)
+        {
+          Console.WriteLine($"\t¨{pokemonMuerto.Nombre}/Vida: {pokemonMuerto.VidaTotal}");
+        }  
+      }
+    }
+    
+    Console.WriteLine($"\nDATOS DE POKEMONES DE JUGADOR {usuario2.Nombre}:\n");
+    {
+      Console.WriteLine($"\tVIVOS:"); 
+      foreach (Pokemon pokemon in usuario2.miCatalogo)
+      {
+        string mensaje = $"\t¨{pokemon.Nombre}/Vida: {pokemon.VidaTotal}";
+        if (pokemon.Dormido)
+          mensaje += $"/Efecto: dormido";
+        if (pokemon.Paralizado)
+          mensaje += $"/Efecto: paralizado";
+        if (pokemon.Envenenado)
+          mensaje += $"/Efecto: envenenado";
+        if (pokemon.Quemado)
+          mensaje += $"/Efecto: quemado";
+        if (pokemon == usuario2.PokemonActual)
+          mensaje += $" (Pokemon actual)";
+        Console.WriteLine(mensaje);
+      }
+      Console.WriteLine($"\n");
+      Console.WriteLine($"\tMUERTOS:");
+      if (usuario2.misMuertos.Count == 0)
+      {
+        Console.WriteLine($"\t(No hay muertos)");
+      }
+      else
+      {
+        foreach (Pokemon pokemonMuerto in usuario2.misMuertos)
         {
           Console.WriteLine($"\t¨{pokemonMuerto.Nombre}/Vida: {pokemonMuerto.VidaTotal}");
         }  

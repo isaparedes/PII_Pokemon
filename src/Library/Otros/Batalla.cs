@@ -42,8 +42,7 @@ public class Batalla
             {
                 Jugador1.MiTurno = true;
                 Jugador1.Turnos += 1;
-                Consola.ImprimirDatos(Jugador1);
-                Consola.ImprimirDatos(Jugador2);
+                Consola.ImprimirDatos(Jugador1, Jugador2);
                 Console.WriteLine($"\nTURNO JUGADOR 1: {Jugador1.Nombre}");
                 Consola.ElegirAccion();
                 int usarRevivir1 = 1;
@@ -83,8 +82,7 @@ public class Batalla
                 }
                 else
                 {
-                    Consola.ImprimirDatos(Jugador1);
-                    Consola.ImprimirDatos(Jugador2);
+                    Consola.ImprimirDatos(Jugador1, Jugador2);
                     Console.WriteLine($"\nTURNO JUGADOR 2: {Jugador2.Nombre}");
                     Consola.ElegirAccion();
                     int usarRevivir2 = 1;

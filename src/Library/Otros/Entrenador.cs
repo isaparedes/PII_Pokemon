@@ -11,28 +11,31 @@ public class Entrenador
     
     public void AgregarPokemon(string nombre)
     {
-        if (this.miCatalogo.Count > 0)
+        //user story 1: poner en fachada
+        while (this.miCatalogo.Count < 6)
         {
-            bool encontrado = false;
-            for (int i = 0; i < this.miCatalogo.Count; i++)
+            if (this.miCatalogo.Count > 0)
             {
-                Pokemon pokemon = this.miCatalogo[i];
-                if (pokemon.Nombre == nombre)
+                bool encontrado = false;
+                for (int i = 0; i < this.miCatalogo.Count; i++)
                 {
-                    encontrado = true;
+                    Pokemon pokemon = this.miCatalogo[i];
+                    if (pokemon.Nombre == nombre)
+                    {
+                        encontrado = true;
+                    }
+                }
+                if (encontrado == false && miCatalogo.Count <= 6 && Batalla.EnBatalla == false)
+                {
+                    Pokemon pokemonNuevo = Pokedex.BuscarPokemon(nombre);
+                    miCatalogo.Add(pokemonNuevo);
                 }
             }
-            if (encontrado == false && miCatalogo.Count <= 6 && Batalla.EnBatalla == false)
+            else
             {
                 Pokemon pokemonNuevo = Pokedex.BuscarPokemon(nombre);
                 miCatalogo.Add(pokemonNuevo);
             }
-        }
-        else
-        {
-            
-            Pokemon pokemonNuevo = Pokedex.BuscarPokemon(nombre);
-            miCatalogo.Add(pokemonNuevo);
         }
        
         
