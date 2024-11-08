@@ -1,4 +1,4 @@
-namespace Library
+/*namespace Library
 {
     public static class Consola
     {
@@ -118,4 +118,4 @@ namespace Library
             Console.WriteLine("1. HacerAccion: Realiza una acción en el turno del entrenador.");
         }
     }
-}
+}*/

@@ -8,35 +8,40 @@ public class Entrenador
     public List<Item> misItems = new List<Item>();
     public bool MiTurno { get; set; }
     public int Turnos { get; set; }
-    
+
     public void AgregarPokemon(string nombre)
     {
-        if (this.miCatalogo.Count > 0)
+        //user story 1: poner en fachada
+        //while (this.miCatalogo.Count < 6)
         {
-            bool encontrado = false;
-            for (int i = 0; i < this.miCatalogo.Count; i++)
+            if (this.miCatalogo.Count > 0)
             {
-                Pokemon pokemon = this.miCatalogo[i];
-                if (pokemon.Nombre == nombre)
+                bool encontrado = false;
+                for (int i = 0; i < this.miCatalogo.Count; i++)
                 {
-                    encontrado = true;
+                    Pokemon pokemon = this.miCatalogo[i];
+                    if (pokemon.Nombre == nombre)
+                    {
+                        encontrado = true;
+                    }
+                }
+
+                if (encontrado == false && miCatalogo.Count <= 6 && Batalla.EnBatalla == false)
+                {
+                    Pokemon pokemonNuevo = Pokedex.BuscarPokemon(nombre);
+                    miCatalogo.Add(pokemonNuevo);
                 }
             }
-            if (encontrado == false && miCatalogo.Count <= 6 && Batalla.EnBatalla == false)
+            else
             {
                 Pokemon pokemonNuevo = Pokedex.BuscarPokemon(nombre);
                 miCatalogo.Add(pokemonNuevo);
             }
         }
-        else
-        {
-            
-            Pokemon pokemonNuevo = Pokedex.BuscarPokemon(nombre);
-            miCatalogo.Add(pokemonNuevo);
-        }
-       
-        
+
+
     }
+
     public void QuitarPokemon(Pokemon pokemon)
     {
         if (this.miCatalogo.Contains(pokemon))
@@ -52,7 +57,7 @@ public class Entrenador
             this.misItems.Add(item);
         }
     }
-    
+
     public void QuitarItem(Item item)
     {
         if (this.misItems.Contains(item))
@@ -68,22 +73,21 @@ public class Entrenador
             this.misMuertos.Add(pokemon);
         }
     }
-    
+
     public void QuitarMuerto(Pokemon pokemon)
     {
-        if (this.miCatalogo.Contains(pokemon))
-        {
-            this.miCatalogo.Remove(pokemon);
-        }
+        this.misMuertos.Remove(pokemon);
     }
 
     public void Recuperar(Pokemon pokemon)
     {
-     
+
         this.miCatalogo.Add(pokemon);
-        
+
     }
+
     public Pokemon PokemonActual { get; set; }
+
     public Entrenador(string nombre)
     {
         this.Nombre = nombre;
