@@ -126,7 +126,7 @@ namespace Library
             for (int i = 0; i < jugador.miCatalogo.Count; i++)
             {
                 Pokemon pokemon = jugador.miCatalogo[i];
-                Console.Write Console.WriteLine($"\t{i} - \"{pokemon.Nombre}\" de Tipo: {pokemon.GetTipo()}");
+                Console.WriteLine($"\t{i} - \"{pokemon.Nombre}\" de Tipo: {pokemon.GetTipo()}");
             }
             Console.WriteLine("==================================");
         }
