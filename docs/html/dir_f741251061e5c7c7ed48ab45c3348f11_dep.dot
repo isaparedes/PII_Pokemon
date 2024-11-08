@@ -11,7 +11,11 @@ digraph "C:/Users/Isabela/Desktop/INGENIERÍA/Programación II/Repositorios/PII_
   subgraph clusterdir_f741251061e5c7c7ed48ab45c3348f11 {
     graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_f741251061e5c7c7ed48ab45c3348f11.html",tooltip=""]
     dir_f741251061e5c7c7ed48ab45c3348f11 [shape=plaintext, label="Library"];
+  dir_49c6254b98a9b9eb8bb4a19c2aa3e1fc [label="Ataque", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_49c6254b98a9b9eb8bb4a19c2aa3e1fc.html",tooltip=""];
+  dir_6c2d4d6b0dd6565c602de96f36b42cbb [label="Item", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_6c2d4d6b0dd6565c602de96f36b42cbb.html",tooltip=""];
   dir_489a34f874ee199237b4241587f8b6f5 [label="obj", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_489a34f874ee199237b4241587f8b6f5.html",tooltip=""];
+  dir_1bf831e3ee1b85e5f05f8f8626ece706 [label="Otros", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_1bf831e3ee1b85e5f05f8f8626ece706.html",tooltip=""];
+  dir_57be7f5402c58ad4338eed093b7c69cb [label="Tipo", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_57be7f5402c58ad4338eed093b7c69cb.html",tooltip=""];
   }
   }
 }

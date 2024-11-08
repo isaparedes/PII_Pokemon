@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Object Lifecycle", "index.html", [
+  [ "PII_Pokemon", "index.html", [
     [ "Qué hay configurado en esta plantilla", "md_C_1_2Users_2Isabela_2Desktop_2INGENIER_xC3_x8DA_2Programaci_xC3_xB3n_01II_2Repositorios_2PII__Pokemon_2README.html", [
       [ "Convenciones", "md_C_1_2Users_2Isabela_2Desktop_2INGENIER_xC3_x8DA_2Programaci_xC3_xB3n_01II_2Repositorios_2PII__Pokemon_2README.html#autotoc_md1", null ],
       [ "Dónde encontrar información sobre los errores/avisos al compilar", "md_C_1_2Users_2Isabela_2Desktop_2INGENIER_xC3_x8DA_2Programaci_xC3_xB3n_01II_2Repositorios_2PII__Pokemon_2README.html#autotoc_md2", null ],
@@ -33,28 +33,29 @@ var NAVTREE =
         [ "StyleCop Analyzer", "md_C_1_2Users_2Isabela_2Desktop_2INGENIER_xC3_x8DA_2Programaci_xC3_xB3n_01II_2Repositorios_2PII__Pokemon_2README.html#autotoc_md5", null ]
       ] ]
     ] ],
-    [ "Packages", "namespaces.html", [
-      [ "Package List", "namespaces.html", "namespaces_dup" ]
+    [ "Paquetes", "namespaces.html", [
+      [ "Lista de paquetes", "namespaces.html", "namespaces_dup" ]
     ] ],
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Properties", "functions_prop.html", null ]
+    [ "Clases", "annotated.html", [
+      [ "Lista de clases", "annotated.html", "annotated_dup" ],
+      [ "Índice de clases", "classes.html", null ],
+      [ "Jerarquía de clases", "hierarchy.html", "hierarchy" ],
+      [ "Miembros de clases", "functions.html", [
+        [ "Todos", "functions.html", null ],
+        [ "Funciones", "functions_func.html", null ],
+        [ "Propiedades", "functions_prop.html", null ]
       ] ]
     ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+    [ "Archivos", "files.html", [
+      [ "Lista de archivos", "files.html", "files_dup" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"LibraryTests_8AssemblyInfo_8cs_source.html"
+"Agua_8cs_source.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'pulsar para deshabilitar sincronización';
+var SYNCOFFMSG = 'pulsar para habilitar sincronización';
