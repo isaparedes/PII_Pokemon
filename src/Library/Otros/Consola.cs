@@ -82,15 +82,16 @@ public static class Consola
       Pokemon pokemon = usuario.miCatalogo[i];
       if (usuario.misItems[itemElegido] is CuraTotal && pokemon.Dormido || pokemon.Paralizado || pokemon.Envenenado || pokemon.Quemado)
         Console.WriteLine($"\t{i} - ¨{pokemon.Nombre}¨ de Tipo: {pokemon.GetTipo()}");
-      else if (pokemon.VidaTotal < pokemon.VidaInicial)
+      else if (usuario.misItems[itemElegido] is not CuraTotal && pokemon.VidaTotal < pokemon.VidaInicial)
         Console.WriteLine($"\t{i} - ¨{pokemon.Nombre}¨ de Tipo: {pokemon.GetTipo()}");
     }
   }
 
   public static void ImprimirDatos(Entrenador usuario)
   {
-    Console.WriteLine($"\nDATOS DE POKEMONES DE JUGADOR {usuario.Nombre}:");
+    Console.WriteLine($"\nDATOS DE POKEMONES DE JUGADOR {usuario.Nombre}:\n");
     {
+      Console.WriteLine($"\tVIVOS:"); 
       foreach (Pokemon pokemon in usuario.miCatalogo)
       {
         string mensaje = $"\t¨{pokemon.Nombre}/Vida: {pokemon.VidaTotal}";
@@ -105,6 +106,19 @@ public static class Consola
         if (pokemon == usuario.PokemonActual)
           mensaje += $" (Pokemon actual)";
         Console.WriteLine(mensaje);
+      }
+      Console.WriteLine($"\n");
+      Console.WriteLine($"\tMUERTOS:");
+      if (usuario.misMuertos.Count == 0)
+      {
+        Console.WriteLine($"\t(No hay muertos)");
+      }
+      else
+      {
+        foreach (Pokemon pokemonMuerto in usuario.misMuertos)
+        {
+          Console.WriteLine($"\t¨{pokemonMuerto.Nombre}/Vida: {pokemonMuerto.VidaTotal}");
+        }  
       }
     }
   }

@@ -71,10 +71,7 @@ public class Entrenador
     
     public void QuitarMuerto(Pokemon pokemon)
     {
-        if (this.miCatalogo.Contains(pokemon))
-        {
-            this.miCatalogo.Remove(pokemon);
-        }
+        this.misMuertos.Remove(pokemon);
     }
 
     public void Recuperar(Pokemon pokemon)

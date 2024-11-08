@@ -7,7 +7,7 @@
 using System;
 using ClassLibrary;
 
-namespace ConsoleApplication
+namespace Library
 {
     /// <summary>
     /// Programa de consola de demostración.
@@ -22,6 +22,23 @@ namespace ConsoleApplication
             var train = new Train();
             train.StartEngines();
             Console.WriteLine("Hello World!");
+            Entrenador vanesa = new Entrenador("vanesa");
+            Entrenador victoria = new Entrenador("victoria");
+            vanesa.AgregarPokemon("Pikachu");
+            vanesa.AgregarPokemon("Skarmory");
+            vanesa.AgregarPokemon("Rockruff");
+            vanesa.AgregarPokemon("Vulpix");
+            vanesa.AgregarPokemon("Charmander");
+            vanesa.AgregarPokemon("Vanillite");
+            victoria.AgregarPokemon("Pikachu");
+            victoria.AgregarPokemon("Bulbasaur");
+            victoria.AgregarPokemon("Squirtle");
+            victoria.AgregarPokemon("Ponyta");
+            victoria.AgregarPokemon("Eevee");
+            victoria.AgregarPokemon("Greavard");
+            Batalla batalla = new Batalla(vanesa, victoria);
+            batalla.Comenzar();
+
         }
     }
 }

@@ -2,7 +2,8 @@ namespace Library;
 
 public static class Turno
 {
-    public static void HacerAccion(Entrenador entrenador, string numero, Entrenador entrenadorAtacado, int usarRevivir, int usarSuperPocion, int usarCuraTotal)
+    public static void HacerAccion(Entrenador entrenador, string numero, Entrenador entrenadorAtacado, int usarRevivir,
+        int usarSuperPocion, int usarCuraTotal)
     {
         Pokemon pokemonActual = entrenador.PokemonActual;
         Pokemon pokemonAtacado = entrenadorAtacado.PokemonActual;
@@ -11,6 +12,7 @@ public static class Turno
             if (pokemon.TurnosDormido == entrenador.Turnos)
                 pokemon.Dormido = false;
         }
+
         if (pokemonActual.VidaTotal == 0 || pokemonActual.Dormido && numero == "0")
         {
             while (numero == "0")
@@ -40,16 +42,16 @@ public static class Turno
         {
             if (pokemon.Envenenado)
             {
-                pokemonActual.RecibirDano(pokemonActual.VidaTotal*5/100);
-                
+                pokemon.RecibirDano(pokemon.VidaTotal * 5 / 100);
+
             }
 
             if (pokemon.Quemado)
             {
-                pokemonActual.RecibirDano(pokemonActual.VidaTotal*10/100);
+                pokemon.RecibirDano(pokemon.VidaTotal * 10 / 100);
             }
         }
-        Consola.ImprimirDatos(entrenador); //imprimir datos
+
         if (pokemonActual.VidaTotal == 0)
         {
             entrenador.QuitarPokemon(pokemonActual);
@@ -63,10 +65,8 @@ public static class Turno
                 Console.WriteLine("Elija una opción válida");
                 numero = Console.ReadLine();
             }
-            Consola.ImprimirDatos(entrenador); //imprimir datos
-
         }
-        
+
         if (numero == "0")
         {
             int indiceAtaque;
@@ -95,12 +95,12 @@ public static class Turno
             {
                 critico = 1;
             }
-            
+
             if (pokemonActual.ataques[indiceAtaque] is AtaqueEspecial ataqueEspecial)
             {
                 if (ataqueEspecial.CalcularPrecision() == 0)
                 {
-                    
+
                     if (ataqueEspecial is Maniqui maniqui)
                     {
                         maniqui.Paralizar(pokemonAtacado);
@@ -118,30 +118,31 @@ public static class Turno
 
                     if (ataqueEspecial is Zzz zzz)
                     {
-                        zzz.Dormir(entrenadorAtacado,pokemonAtacado);
+                        zzz.Dormir(entrenadorAtacado, pokemonAtacado);
                     }
                 }
-               
+
             }
             else
             {
                 Ataque ataque = pokemonActual.ataques[indiceAtaque];
-                if (ataque.CalcularPrecision() == 0);
+                if (ataque.CalcularPrecision() == 0) ;
                 {
                     int dano = Efectividad.CalcularEfectividad(ataque, pokemonAtacado);
                     if (critico == 0)
                     {
                         dano *= 120 / 100;
                     }
+
                     pokemonAtacado.RecibirDano(dano);
                 }
             }
+
             if (pokemonAtacado.VidaTotal == 0)
             {
                 entrenadorAtacado.QuitarPokemon(pokemonAtacado);
                 entrenadorAtacado.AgregarMuerto(pokemonAtacado);
             }
-            Consola.ImprimirDatos(entrenadorAtacado); //imprimir datos
         }
 
         if (numero == "1")
@@ -157,7 +158,7 @@ public static class Turno
             Consola.ElegirItem(entrenador);
             string item = Console.ReadLine();
             int itemElegido = int.Parse(item);
-            if (entrenador.misItems[itemElegido] is Revivir && usarRevivir == 1 )
+            if (entrenador.misItems[itemElegido] is Revivir && usarRevivir == 1)
             {
                 while (entrenador.misItems[itemElegido] is Revivir)
                 {
@@ -167,7 +168,8 @@ public static class Turno
                     itemElegido = int.Parse(item);
                 }
             }
-            if (entrenador.misItems[itemElegido] is SuperPocion && usarSuperPocion == 1 )
+
+            if (entrenador.misItems[itemElegido] is SuperPocion && usarSuperPocion == 1)
             {
                 while (entrenador.misItems[itemElegido] is SuperPocion)
                 {
@@ -177,44 +179,43 @@ public static class Turno
                     itemElegido = int.Parse(item);
                 }
             }
-            if (entrenador.misItems[itemElegido] is CuraTotal && usarCuraTotal == 1 )
+
+            if (entrenador.misItems[itemElegido] is CuraTotal && usarCuraTotal == 1)
             {
                 while (entrenador.misItems[itemElegido] is CuraTotal)
                 {
-                    Console.WriteLine("\nDebes elegir otra opción. No hay pokemons bajo efectos de ataques especiales.");
+                    Console.WriteLine(
+                        "\nDebes elegir otra opción. No hay pokemons bajo efectos de ataques especiales.");
                     Consola.ElegirItem(entrenador);
                     item = Console.ReadLine();
                     itemElegido = int.Parse(item);
                 }
             }
+
             if (entrenador.misItems[itemElegido] is Revivir revivir)
             {
                 Consola.ElegirPokemonMuerto(entrenador);
                 string pokemonMuerto = Console.ReadLine();
                 int pokemonElegido = int.Parse(pokemonMuerto);
                 Pokemon pokemonARevivir = entrenador.misMuertos[pokemonElegido];
-                revivir.RevivirPokemon(entrenador,pokemonARevivir);
-                Consola.ImprimirDatos(entrenador); //imprimir datos
+                revivir.RevivirPokemon(entrenador, pokemonARevivir);
             }
             else
             {
-                Consola.ElegirPokemonHerido(entrenador,itemElegido);
+                Consola.ElegirPokemonHerido(entrenador, itemElegido);
                 string _pokemon = Console.ReadLine();
                 int pokemonElegido = int.Parse(_pokemon);
-                Pokemon pokemon= entrenador.miCatalogo[pokemonElegido];
+                Pokemon pokemon = entrenador.miCatalogo[pokemonElegido];
                 if (entrenador.misItems[itemElegido] is CuraTotal curaTotal)
                 {
-                    curaTotal.CurarTotalmente(entrenador,pokemon);
-                    Consola.ImprimirDatos(entrenador); //imprimir datos
-                }
-                if (entrenador.misItems[itemElegido] is SuperPocion superPocion)
-                {
-                    superPocion.SuperPocionar(entrenador,pokemon);
-                    Consola.ImprimirDatos(entrenador); //imprimir datos
+                    curaTotal.CurarTotalmente(entrenador, pokemon);
+                    if (entrenador.misItems[itemElegido] is SuperPocion superPocion)
+                    {
+                        superPocion.SuperPocionar(entrenador, pokemon);
+                    }
                 }
             }
+            entrenador.MiTurno = false;
         }
-        entrenador.MiTurno = false;
-
     }
 }
