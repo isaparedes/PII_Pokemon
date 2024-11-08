@@ -175,7 +175,7 @@ namespace Library
             Console.WriteLine("==================================");
         }
 
-        public static void ImprimirDatos(Entrenador usuario)
+        public void ImprimirDatos(Entrenador usuario)
         {
             Console.WriteLine($"\n==================================");
             Console.WriteLine($"DATOS DE POKEMONES DE JUGADOR {usuario.Nombre}:");

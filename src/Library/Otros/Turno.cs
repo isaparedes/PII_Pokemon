@@ -2,8 +2,8 @@ namespace Library;
 
 public static class Turno
 {
-    public static void HacerAccion(Entrenador entrenador, string numero, Entrenador entrenadorAtacado, int usarRevivir, 
-        int usarSuperPocion, int usarCuraTotal)
+    public static void HacerAccion(Entrenador entrenador, string numero, Entrenador entrenadorAtacado, 
+        int usarRevivir, int usarSuperPocion, int usarCuraTotal, Facade facade)
     {
         Pokemon pokemonActual = entrenador.PokemonActual;
         Pokemon pokemonAtacado = entrenadorAtacado.PokemonActual;
@@ -13,7 +13,7 @@ public static class Turno
             entrenador.AgregarMuerto(pokemonActual);
             Console.WriteLine($"\nTu pokemon {pokemonActual.Nombre} ha muerto");
             Console.WriteLine($"Puede cambiarlo o usar un item");
-            Facade.ElegirAccion();
+            facade.ElegirAccion();
             numero = Console.ReadLine();
             while (numero == "0")
             {
@@ -32,7 +32,7 @@ public static class Turno
             while (numero == "0")
             {
                 Console.WriteLine("\nNo se puede elegir atacar, su pokemon está dormido. Elija otra opción");
-                Facade.ElegirAccion();
+                facade.ElegirAccion();
                 numero = Console.ReadLine();
             }
         }
@@ -46,7 +46,7 @@ public static class Turno
                 while (numero == "0")
                 {
                     Console.WriteLine("\nNo se puede elegir atacar, su pokemon esta paralizado. Elija otra opción");
-                    Facade.ElegirAccion();
+                    facade.ElegirAccion();
                     numero = Console.ReadLine();
                 }
             }

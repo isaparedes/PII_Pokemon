@@ -86,7 +86,7 @@ namespace Library
                 accion = Console.ReadLine();
             }
 
-            Turno.HacerAccion(jugador, accion, oponente, usarRevivir, usarSuperPocion, usarCuraTotal);
+            Turno.HacerAccion(jugador, accion, oponente, usarRevivir, usarSuperPocion, usarCuraTotal, facade);
 
             if (oponente.miCatalogo.Count == 0 && !oponente.misItems.OfType<Revivir>().Any())
             {
