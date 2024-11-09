@@ -228,6 +228,7 @@ namespace Library
                 if (pokemon.Paralizado) mensaje += " / Efecto: paralizado";
                 if (pokemon.Envenenado) mensaje += " / Efecto: envenenado";
                 if (pokemon.Quemado) mensaje += " / Efecto: quemado";
+                if (pokemon == usuario.PokemonActual) mensaje += " (Pokémon actual)";
                 Console.WriteLine(mensaje);
             }
             Console.WriteLine("==================================");
