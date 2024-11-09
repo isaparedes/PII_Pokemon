@@ -4,5 +4,25 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="T:LibraryTests.AtaqueTests">
+            <summary>
+            Esta es la clase AtaqueTests. Se encarga de comprobar que se logre instanciar correctamente un Ataque.
+            </summary>
+        </member>
+        <member name="T:LibraryTests.BatallaTests">
+            <summary>
+            Esta es la clase BatallaTests. Se encarga de comprobar que se logre instanciar correctamente una Batalla.
+            </summary>
+        </member>
+        <member name="T:LibraryTests.EntrenadorTests">
+            <summary>
+            Esta es la clase EntrenadorTests. Se encarga de comprobar que se logre instanciar correctamente un Entrenador.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.FacadeTests">
+            <summary>
+            Esta es la clase FacadeTests. Se encarga de comprobar que las funciones de facade fluyan correctamente.
+            </summary>
+        </member>
     </members>
 </doc>

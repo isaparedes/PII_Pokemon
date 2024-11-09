@@ -2,7 +2,9 @@ using Library;
 using NUnit.Framework;
 
 namespace LibraryTests;
-
+/// <summary>
+/// Esta es la clase EntrenadorTests. Se encarga de comprobar que se logre instanciar correctamente un Entrenador.
+/// </summary>
 [TestFixture]
 [TestOf(typeof(Entrenador))]
 public class EntrenadorTests

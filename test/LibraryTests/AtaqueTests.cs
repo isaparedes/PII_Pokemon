@@ -2,7 +2,9 @@ using Library;
 using NUnit.Framework;
 
 namespace LibraryTests;
-
+/// <summary>
+/// Esta es la clase AtaqueTests. Se encarga de comprobar que se logre instanciar correctamente un Ataque.
+/// </summary>
 [TestFixture]
 [TestOf(typeof(Library.Ataque))]
 public class AtaqueTests

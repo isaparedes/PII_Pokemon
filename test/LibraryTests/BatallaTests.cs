@@ -2,7 +2,9 @@ using Library;
 using NUnit.Framework;
 
 namespace LibraryTests;
-
+/// <summary>
+/// Esta es la clase BatallaTests. Se encarga de comprobar que se logre instanciar correctamente una Batalla.
+/// </summary>
 [TestFixture]
 [TestOf(typeof(Batalla))]
 public class BatallaTests
