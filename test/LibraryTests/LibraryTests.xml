@@ -4,29 +4,24 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
-        <member name="T:Tests.TrainTests">
+        <member name="T:LibraryTests.AtaqueTests">
             <summary>
-            Prueba de la clase <see cref="T:ClassLibrary.Train"/>.
+            Esta es la clase AtaqueTests. Se encarga de comprobar que se logre instanciar correctamente un Ataque.
             </summary>
         </member>
-        <member name="F:Tests.TrainTests.train">
+        <member name="T:LibraryTests.BatallaTests">
             <summary>
-            El tren para probar.
+            Esta es la clase BatallaTests. Se encarga de comprobar que se logre instanciar correctamente una Batalla.
             </summary>
         </member>
-        <member name="M:Tests.TrainTests.Setup">
+        <member name="T:LibraryTests.EntrenadorTests">
             <summary>
-            Crea un tren para probar.
+            Esta es la clase EntrenadorTests. Se encarga de comprobar que se logre instanciar correctamente un Entrenador.
             </summary>
         </member>
-        <member name="M:Tests.TrainTests.StartTrainTest">
+        <member name="T:Library.Tests.FacadeTests">
             <summary>
-            Prueba que el tren arranque.
-            </summary>
-        </member>
-        <member name="M:Tests.TrainTests.StopTrainTest">
-            <summary>
-            Prueba que el tren se detenga.
+            Esta es la clase FacadeTests. Se encarga de comprobar que las funciones de facade fluyan correctamente.
             </summary>
         </member>
     </members>
