@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Library
 {
+    /// <summary>
+    /// Esta es la clase Facade. Se encarga de crear instancias de Facade y gestionar sus responsabilidades.
+    /// </summary>
     public class Facade
     {
         /*
@@ -20,15 +23,28 @@ namespace Library
         11. Como jugador, quiero que el juego termine cuando uno de los jugadores no tenga Pokémon vivos.
         */
 
+        /// <summary>
+        /// Atributo tipo Entrenador que indica el Jugador 1.
+        /// </summary>
         private Entrenador jugador1;
+        /// <summary>
+        /// Atributo tipo Entrenador que indica el Jugador 1.
+        /// </summary>
         private Entrenador jugador2;
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Facade"/>.
+        /// </summary>
+        /// <param name="nombreJugador1">El nombre del Jugador 1.</param>
+        /// <param name="nombreJugador2">El nombre del Jugador 2.</param>
         public Facade(string nombreJugador1, string nombreJugador2)
         {
             jugador1 = new Entrenador(nombreJugador1);
             jugador2 = new Entrenador(nombreJugador2);
         }
-
+        /// <summary>
+        /// Se encarga de crear una instancia de batalla y darle comienzo.
+        /// </summary>
         public void ComenzarBatalla()
         {
             InicializarPokemon(jugador1);
@@ -36,7 +52,10 @@ namespace Library
             Batalla batalla = new Batalla(jugador1, jugador2, this);
             batalla.Comenzar();
         }
-
+        /// <summary>
+        /// Se encarga de mostrar los Pokémons disponibles para elegir.
+        /// </summary>
+        /// <param name="jugador">El entrenador que elige los Pokémons.</param>
         private void InicializarPokemon(Entrenador jugador)
         {
             Console.WriteLine($"Selecciona 6 Pokémon para {jugador.Nombre}:");
@@ -76,7 +95,11 @@ namespace Library
                 }
             }
         }
-
+        /// <summary>
+        /// Se encarga de dar inicio a la acción que elige el entrenador
+        /// </summary>
+        /// <param name="jugador">El entrenador que realiza la acción.</param>
+        /// <param name="oponente">El entrenador que no está en su turno.</param>
         public void RealizarAccion(Entrenador jugador, Entrenador oponente)
         {
             while (true)
@@ -105,7 +128,9 @@ namespace Library
             }
         }
 
-        // Métodos de Consola trasladados a Facade
+        /// <summary>
+        /// Se encarga de mostrar las acciones disponibles para el turno.
+        /// </summary>
 
         public void ElegirAccion()
         {
@@ -118,6 +143,10 @@ namespace Library
             Console.WriteLine("==================================");
         }
 
+        /// <summary>
+        /// Se encarga de mostrar los Pokémons disponibles para cambiar.
+        /// </summary>
+        /// <param name="usuario">El entrenador que debe elegir.</param>
         public static void ElegirPokemon(Entrenador usuario)
         {
             Console.WriteLine("\n==================================");
@@ -129,7 +158,10 @@ namespace Library
             }
             Console.WriteLine("==================================");
         }
-
+        /// <summary>
+        /// Se encarga de mostrar los ataques (todos) del Pokémon.
+        /// </summary>
+        /// <param name="pokemon">El Pokémon cuyas acciones se muestran.</param>
         public static void ElegirAtaque(Pokemon pokemon)
         {
             Console.WriteLine($"\n==================================");
@@ -146,7 +178,10 @@ namespace Library
             }
             Console.WriteLine("==================================");
         }
-
+        /// <summary>
+        /// Se encarga de mostrar los ataques simples del Pokémon.
+        /// </summary>
+        /// <param name="pokemon">El Pokémon cuyas acciones se muestran.</param>
         public static void ElegirAtaqueSimple(Pokemon pokemon)
         {
             Console.WriteLine($"\n==================================");
@@ -163,6 +198,10 @@ namespace Library
     
             Console.WriteLine("==================================");
         }
+        /// <summary>
+        /// Se encarga de mostrar los items disponibles para elegir para usar.
+        /// </summary>
+        /// <param name="usuario">El entrenador que debe elegir.</param>
         public static void ElegirItem(Entrenador usuario)
         {
             Console.WriteLine($"\n==================================");
@@ -174,7 +213,10 @@ namespace Library
             }
             Console.WriteLine("==================================");
         }
-
+        /// <summary>
+        /// Se encarga de mostrar los datos del jugador (estado de sus Pokémons).
+        /// </summary>
+        /// <param name="usuario">El entrenador cuyos datos se muestran.</param>
         public void ImprimirDatos(Entrenador usuario)
         {
             Console.WriteLine($"\n==================================");
@@ -190,7 +232,10 @@ namespace Library
             }
             Console.WriteLine("==================================");
         }
-
+        /// <summary>
+        /// Se encarga de mostrar los Pokémons muertos del jugador.
+        /// </summary>
+        /// <param name="usuario">El entrenador cuyos Pokémons muertos se muestran.</param>
         public static void ElegirPokemonMuerto(Entrenador usuario)
         {
             Console.WriteLine("\n==================================");
@@ -202,7 +247,10 @@ namespace Library
             }
             Console.WriteLine("==================================");
         }
-
+        /// <summary>
+        /// Se encarga de mostrar los Pokémons heridos del jugador.
+        /// </summary>
+        /// <param name="usuario">El entrenador cuyos Pokémons heridos se muestran.</param>
         public static void ElegirPokemonHerido(Entrenador usuario, int itemElegido)
         {
             Console.WriteLine("\n==================================");
@@ -217,20 +265,27 @@ namespace Library
             }
             Console.WriteLine("==================================");
         }
-
+        /// <summary>
+        /// Se encarga de mostrar los métodos disponibles de la batalla.
+        /// </summary>
         public static void MostrarMetodosBatalla()
         {
             Console.WriteLine("\nMétodos disponibles en la clase Batalla:");
             Console.WriteLine("1. Comenzar: Comienza la batalla entre dos entrenadores.");
         }
         
-
+        /// <summary>
+        /// Se encarga de mostrar métodos disponibles para el turno.
+        /// </summary>
         public static void MostrarMetodosTurno()
         {
             Console.WriteLine("\nMétodos disponibles en la clase Turno:");
             Console.WriteLine("1. HacerAccion: Realiza una acción en el turno del entrenador.");
         }
-
+        /// <summary>
+        /// Se encarga de mostrar los datos del jugador.
+        /// </summary>
+        /// <param name="jugador">El entrenador al que se le muestran los datos.</param>
         private static void MostrarDatosJugador(Entrenador jugador)
         {
             Console.WriteLine("\n==================================");

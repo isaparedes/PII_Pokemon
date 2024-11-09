@@ -1,7 +1,15 @@
 namespace Library;
-
+/// <summary>
+/// Esta es la clase estática Turno. Se encarga de realizar la acción que decide el usuario.
+/// </summary>
 public static class Turno
 {
+    /// <summary>
+    /// Se encarga de realizar la acción que el usuario decidió hacer.
+    /// </summary>
+    /// <param name="entrenador">El entrenador que elige acción.</param>
+    /// <param name="numero">El número que indica la acción.</param>
+    /// <param name="entrenadorAtacado">El entrenador que no está en su turno.</param>
     public static void HacerAccion(Entrenador entrenador, string numero, Entrenador entrenadorAtacado, 
         int usarRevivir, int usarSuperPocion, int usarCuraTotal, Facade facade)
     {

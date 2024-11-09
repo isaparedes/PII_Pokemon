@@ -1,7 +1,12 @@
 namespace Library;
-
+/// <summary>
+/// Esta es la clase estática Pokedex. Se encarga de tener todos los Pokémons disponibles para usar.
+/// </summary>
 public static class Pokedex
 {
+    /// <summary>
+    /// Atributo estático tipo Lista que contiene todos los Pokémons disponibles.
+    /// </summary>
     public static List<Pokemon> listaPokemons = new List<Pokemon>
     {
         new Pokemon("Bulbasaur", new Planta()), new Pokemon("Caterpie", new Bicho()),
@@ -20,7 +25,10 @@ public static class Pokedex
         new Pokemon("Voltorb", new Electrico()), new Pokemon("Vullaby", new Volador()),
         new Pokemon("Vulpix", new Fuego()), new Pokemon("Wurmple", new Bicho())
     };
-
+    /// <summary>
+    /// Se encarga de buscar un Pokémon en la Pokédex por su nombre.
+    /// </summary>
+    /// <param name="nombre">El nombre del Pokémon a buscar.</param>
     public static Pokemon BuscarPokemon(string nombre)
     {
         foreach (Pokemon pokemon in listaPokemons)
@@ -33,7 +41,10 @@ public static class Pokedex
         }
         return null;
     }
-
+    /// <summary>
+    /// Se encarga de crear una copia profunda del Pokémon que recibe.
+    /// </summary>
+    /// <param name="pokemon">El Pokémon que se copia.</param>
     public static Pokemon CrearCopia(Pokemon pokemon)
     {
         string nombreCopia = pokemon.Nombre;

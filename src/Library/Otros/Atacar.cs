@@ -1,7 +1,14 @@
 namespace Library;
-
+/// <summary>
+/// Esta es la clase estática Atacar. Define las acciones a seguir cuando el usuario elige atacar durante la batalla.
+/// </summary>
 public static class Atacar
 {
+    /// <summary>
+    /// Determina si un Pokémon ataca a otro y con que ataque de acuerdo a la precisión, efectividad, golpe crítico y efectos.
+    /// </summary>
+    /// <param name="atacante">El entrenador que posee al Pokémon que ataca.</param>
+    /// <param name="victima">El entrenador que posee al Pokémon que es atacado..</param>
     public static void Encuentro(Entrenador atacante, Entrenador victima)
     {
         Pokemon pokemonActual = atacante.PokemonActual;
