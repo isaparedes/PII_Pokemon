@@ -139,7 +139,6 @@ namespace Library
             Console.WriteLine("\t0 - Atacar");
             Console.WriteLine("\t1 - Cambiar Pokémon");
             Console.WriteLine("\t2 - Usar ítem");
-            Console.WriteLine("\t3 - Ver datos del jugador");
             Console.WriteLine("==================================");
         }
 
